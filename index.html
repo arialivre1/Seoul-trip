@@ -2,25 +2,143 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
-<title>首爾行程 Day1 - 明洞安頓</title>
+<title>首爾7日行程</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-  body{font-family:"Noto Sans TC","PingFang HK",sans-serif;background:#f7f5f2;color:#333;margin:0;padding:0;}
-  header{background:#2b2b52;color:#fff;padding:20px;text-align:center;}
-  h1{margin:0;font-size:22px;}
+  :root{
+    --day1:#7c6cff; --day1-soft:#efeaff;
+    --day2:#ff6b6b; --day2-soft:#ffecec;
+    --day3:#3bc9c9; --day3-soft:#e6fbfb;
+    --day4:#ffa94d; --day4-soft:#fff2e2;
+    --day5:#8a63f2; --day5-soft:#f0eafe;
+    --day6:#51cf66; --day6-soft:#e9fbec;
+    --day7:#f783ac; --day7-soft:#fdeaf1;
+    --ink:#33323d;
+  }
+  *{box-sizing:border-box;}
+  body{
+    font-family:"Noto Sans TC","PingFang TC",sans-serif;
+    font-weight:400;
+    letter-spacing:0.3px;
+    background:#f6f5f2;
+    color:var(--ink);
+    margin:0;padding:0;
+    -webkit-font-smoothing:antialiased;
+  }
+  header{
+    background:linear-gradient(135deg,#3a3a6e,#2b2b52);
+    color:#fff;padding:26px 20px 18px;text-align:center;
+    border-radius:0 0 24px 24px;
+  }
+  h1{margin:0;font-size:22px;font-weight:600;letter-spacing:1px;}
+  header p{margin:6px 0 0;font-size:13px;opacity:0.85;}
+
   .container{max-width:900px;margin:0 auto;padding:16px;}
-  section{background:#fff;border-radius:12px;padding:16px;margin-bottom:16px;box-shadow:0 2px 6px rgba(0,0,0,0.08);}
-  h2{color:#2b2b52;border-left:5px solid #e8734a;padding-left:8px;}
-  h3{color:#e8734a;margin-top:20px;}
-  .card{border:1px solid #eee;border-radius:10px;padding:12px;margin-bottom:10px;background:#fafafa;}
-  .tag{display:inline-block;background:#e8734a;color:#fff;font-size:12px;padding:2px 8px;border-radius:20px;margin-right:6px;}
-  .time{font-weight:bold;color:#2b2b52;}
-  a{color:#e8734a;text-decoration:none;}
+
+  /* ---------- Search Bar ---------- */
+  .searchWrap{
+    position:sticky;top:0;z-index:50;
+    background:#f6f5f2;
+    padding:12px 16px;
+  }
+  .searchBox{
+    display:flex;align-items:center;
+    background:#fff;
+    border-radius:24px;
+    padding:8px 14px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.08);
+  }
+  .searchBox input{
+    flex:1;border:none;outline:none;
+    font-size:14px;background:transparent;
+    font-family:inherit;color:var(--ink);
+  }
+  .searchBox .icon{margin-right:8px;opacity:0.5;}
+  .clearBtn{
+    border:none;background:#eee;color:#888;
+    width:22px;height:22px;border-radius:50%;
+    font-size:13px;cursor:pointer;
+    display:none;align-items:center;justify-content:center;
+    line-height:1;
+  }
+  .clearBtn.show{display:flex;}
+  .clearBtn:hover{background:#e0574a;color:#fff;}
+
+  /* ---------- Tabs ---------- */
+  .tabBar{
+    display:flex;overflow-x:auto;gap:8px;
+    padding:4px 16px 14px;
+    scrollbar-width:none;
+  }
+  .tabBar::-webkit-scrollbar{display:none;}
+  .tabBtn{
+    flex:0 0 auto;
+    border:none;cursor:pointer;
+    padding:10px 18px;
+    border-radius:20px;
+    font-size:14px;font-weight:600;
+    background:#fff;color:#999;
+    box-shadow:0 2px 6px rgba(0,0,0,0.06);
+    transition:all .25s ease;
+    white-space:nowrap;
+  }
+  .tabBtn.active{
+    color:#fff;
+    transform:translateY(-1px);
+    box-shadow:0 4px 12px rgba(0,0,0,0.18);
+  }
+
+  .container > section{display:none;}
+  .container > section.active{display:block;}
+
+  section{
+    background:#fff;border-radius:18px;padding:18px;
+    margin-bottom:16px;box-shadow:0 2px 10px rgba(0,0,0,0.06);
+  }
+  .staticSection{display:block !important;}
+
+  h2{font-size:17px;margin-top:0;padding-left:10px;border-left:5px solid #e8734a;font-weight:600;}
+  h3{margin-top:18px;font-weight:600;}
+
+  .dayHead{
+    display:flex;align-items:center;justify-content:space-between;
+    flex-wrap:wrap;gap:10px;margin-bottom:14px;
+  }
+  .dayTitle{font-size:16px;font-weight:700;}
+  .dayRoute{font-size:13px;color:#777;margin-top:2px;}
+
+  /* ---------- 轉轉卡 Badge ---------- */
+  .cardBadge{
+    display:inline-flex;align-items:center;gap:6px;
+    background:linear-gradient(135deg,#8a63f2,#4a6cf7);
+    color:#fff;font-weight:700;font-size:13px;
+    padding:6px 16px;border-radius:30px;
+    box-shadow:0 4px 10px rgba(74,108,247,0.35);
+  }
+
+  .card{
+    border:1px solid #f0f0f0;border-radius:16px;
+    padding:14px;margin-bottom:12px;background:#fafafa;
+    transition:box-shadow .2s;
+  }
+  .card:hover{box-shadow:0 3px 12px rgba(0,0,0,0.08);}
+  .card.hidden{display:none;}
+
+  .tag{display:inline-block;background:#e8734a;color:#fff;font-size:11px;padding:3px 10px;border-radius:20px;margin-right:6px;}
+  .time{font-weight:700;}
+  .subwayTag{
+    display:inline-flex;align-items:center;gap:4px;
+    background:#eef1ff;color:#4a5cc0;
+    font-size:12px;padding:3px 10px;border-radius:14px;
+    margin-top:6px;
+  }
+  a{text-decoration:none;font-weight:600;}
   a:hover{text-decoration:underline;}
-  table{width:100%;border-collapse:collapse;font-size:14px;}
-  table td, table th{border:1px solid #ddd;padding:6px;text-align:left;}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;}
+  table td, table th{border:1px solid #eee;padding:8px;text-align:left;}
   ul{padding-left:18px;}
-  .note{font-size:12px;color:#888;}
+  .note{font-size:12px;color:#999;margin-top:6px;}
+  .timelineRow td:first-child{white-space:nowrap;}
 </style>
 </head>
 <body>
@@ -29,48 +147,44 @@
   <p id="tripSubtitle"></p>
 </header>
 
-<div class="container">
+<div class="searchWrap">
+  <div class="searchBox">
+    <span class="icon">🔍</span>
+    <input id="searchInput" type="text" placeholder="搜尋餐廳／景點／地鐵站…">
+    <button class="clearBtn" id="clearBtn">✕</button>
+  </div>
+</div>
 
-  <section id="hotelSection">
+<div class="tabBar" id="tabBar"></div>
+
+<div class="container" id="container">
+
+  <section id="hotelSection" class="staticSection">
     <h2>🏨 酒店資訊</h2>
     <div id="hotelInfo"></div>
   </section>
 
-  <section id="prepSection">
+  <section id="prepSection" class="staticSection">
     <h2>🔑 出發前必辦 Top 5</h2>
     <div id="prepList"></div>
   </section>
 
-  <section id="airportSection">
+  <section id="airportSection" class="staticSection">
     <h2>🗺️ 仁川機場 T1／T2 指南</h2>
     <div id="airportGuide"></div>
   </section>
 
-  <section id="day1Section">
-    <h2>DAY 1 行程</h2>
-    <div id="day1Itinerary"></div>
-  </section>
-
-  <section id="restaurantSection">
-    <h2>🍜 DAY 1 明洞附近餐廳推薦</h2>
-    <div id="restaurantList"></div>
-  </section>
-
-  <section id="shopSection">
-    <h2>🛍️ DAY 1 附近商圈店舖推薦</h2>
-    <div id="shopList"></div>
-  </section>
+  <div id="dayPanels"></div>
 
 </div>
 
 <script src="data.js"></script>
 <script>
 const d = tripData;
-
 document.getElementById('tripTitle').innerText = d.title;
 document.getElementById('tripSubtitle').innerText = d.subtitle;
 
-// Hotel
+// ---------- Hotel ----------
 document.getElementById('hotelInfo').innerHTML = `
   <p><strong>${d.hotel.name}</strong>（${d.hotel.nameKr}）</p>
   <p>📍 韓文地址：${d.hotel.addressKr}</p>
@@ -78,57 +192,141 @@ document.getElementById('hotelInfo').innerHTML = `
   <p>🚇 地鐵：${d.hotel.subway}</p>
 `;
 
-// Prep Top5
+// ---------- Prep ----------
 document.getElementById('prepList').innerHTML = d.prepList.map(p => `
   <div class="card">
     <h3>${p.title}</h3>
     <p>${p.desc}</p>
-    <ul>
-      ${p.links.map(l => `<li><a href="${l.url}" target="_blank">${l.label}</a></li>`).join('')}
-    </ul>
-    ${p.note ? `<p class="note">⚠️ ${p.note}</p>` : ''}
+    <ul>${p.links.map(l=>`<li><a href="${l.url}" target="_blank">${l.label}</a></li>`).join('')}</ul>
+    ${p.note?`<p class="note">⚠️ ${p.note}</p>`:''}
   </div>
 `).join('');
 
-// Airport Guide
-document.getElementById('airportGuide').innerHTML = d.airportGuide.map(t => `
+// ---------- Airport ----------
+document.getElementById('airportGuide').innerHTML = d.airportGuide.map(t=>`
   <div class="card">
     <h3>${t.terminal}</h3>
-    <table>
-      <tr><th>設施</th><th>位置</th></tr>
-      ${t.facilities.map(f => `<tr><td>${f.name}</td><td>${f.location}</td></tr>`).join('')}
+    <table><tr><th>設施</th><th>位置</th></tr>
+    ${t.facilities.map(f=>`<tr><td>${f.name}</td><td>${f.location}</td></tr>`).join('')}
     </table>
   </div>
 `).join('') + `<p class="note">${d.airportGuideNote}</p>`;
 
-// Day1 Itinerary
-document.getElementById('day1Itinerary').innerHTML = `
-  <p><strong>${d.day1.date}｜${d.day1.theme}</strong></p>
-  <p>${d.day1.route}</p>
-  <table>
-    <tr><th>時間</th><th>內容</th></tr>
-    ${d.day1.timeline.map(t => `<tr><td class="time">${t.time}</td><td>${t.desc}</td></tr>`).join('')}
-  </table>
-`;
+// ---------- Tabs + Day Panels ----------
+const tabBar = document.getElementById('tabBar');
+const dayPanels = document.getElementById('dayPanels');
 
-// Restaurants
-document.getElementById('restaurantList').innerHTML = d.restaurants.map(r => `
-  <div class="card">
-    <strong>${r.name}</strong>（${r.nameKr}）<span class="tag">${r.type}</span>
-    <p>📍 ${r.addressKr}</p>
-    <p>🍽️ 主要菜式：${r.mainDish}</p>
-    ${r.note ? `<p class="note">${r.note}</p>` : ''}
-  </div>
-`).join('');
+d.days.forEach((day, idx) => {
+  const colorVar = `var(--day${idx+1})`;
+  const softVar = `var(--day${idx+1}-soft)`;
 
-// Shops
-document.getElementById('shopList').innerHTML = d.shops.map(s => `
-  <div class="card">
-    <strong>${s.name}</strong>（${s.nameKr}）<span class="tag">${s.category}</span>
-    <p>📍 ${s.addressKr}</p>
-    <p>🛒 推薦購買：${s.recommend}</p>
-  </div>
-`).join('');
+  // Tab button
+  const btn = document.createElement('button');
+  btn.className = 'tabBtn' + (idx===0?' active':'');
+  btn.style.background = idx===0 ? colorVar : '#fff';
+  btn.innerText = `DAY ${idx+1}`;
+  btn.dataset.idx = idx;
+  btn.addEventListener('click', () => switchDay(idx));
+  tabBar.appendChild(btn);
+
+  // Panel
+  const panel = document.createElement('section');
+  panel.className = 'dayPanel' + (idx===0?' active':'');
+  panel.dataset.idx = idx;
+  panel.style.borderTop = `4px solid ${colorVar}`;
+
+  const cardBadge = day.cardDay
+    ? `<span class="cardBadge">🎫 轉轉卡 Day ${day.cardDay}</span>` : '';
+
+  panel.innerHTML = `
+    <h2 style="border-color:${colorVar}">DAY ${idx+1}｜${day.date}</h2>
+    <div class="dayHead">
+      <div>
+        <div class="dayTitle">${day.theme}</div>
+        <div class="dayRoute">${day.route||''}</div>
+      </div>
+      ${cardBadge}
+    </div>
+    <table>
+      <tr><th style="width:90px;">時間</th><th>內容</th></tr>
+      ${day.timeline.map(t=>`
+        <tr class="timelineRow">
+          <td class="time" style="color:${colorVar}">${t.time}</td>
+          <td>
+            ${t.desc}
+            ${t.subway?`<div class="subwayTag">🚇 ${t.subway}</div>`:''}
+          </td>
+        </tr>
+      `).join('')}
+    </table>
+
+    ${day.restaurants && day.restaurants.length ? `
+      <h3 style="color:${colorVar}">🍜 餐廳推薦</h3>
+      ${day.restaurants.map(r=>`
+        <div class="card searchable">
+          <strong>${r.name}</strong>（${r.nameKr}）<span class="tag" style="background:${colorVar}">${r.type}</span>
+          <p>📍 ${r.addressKr}</p>
+          <p>🚇 ${r.subway||'—'}</p>
+          <p>🍽️ 主要菜式：${r.mainDish}</p>
+          ${r.note?`<p class="note">${r.note}</p>`:''}
+        </div>
+      `).join('')}` : ''}
+
+    ${day.shops && day.shops.length ? `
+      <h3 style="color:${colorVar}">🛍️ 商圈店舖推薦</h3>
+      ${day.shops.map(s=>`
+        <div class="card searchable">
+          <strong>${s.name}</strong>（${s.nameKr}）<span class="tag" style="background:${colorVar}">${s.category}</span>
+          <p>📍 ${s.addressKr}</p>
+          <p>🚇 ${s.subway||'—'}</p>
+          <p>🛒 推薦購買：${s.recommend}</p>
+        </div>
+      `).join('')}` : ''}
+  `;
+  dayPanels.appendChild(panel);
+});
+
+function switchDay(idx){
+  document.querySelectorAll('.tabBtn').forEach((b,i)=>{
+    b.classList.toggle('active', i===idx);
+    b.style.background = i===idx ? `var(--day${i+1})` : '#fff';
+  });
+  document.querySelectorAll('.dayPanel').forEach(p=>{
+    p.classList.toggle('active', Number(p.dataset.idx)===idx);
+  });
+  document.getElementById('searchInput').value='';
+  filterSearch('');
+}
+
+// ---------- Search ----------
+const searchInput = document.getElementById('searchInput');
+const clearBtn = document.getElementById('clearBtn');
+
+searchInput.addEventListener('input', e=>{
+  const val = e.target.value.trim();
+  clearBtn.classList.toggle('show', val.length>0);
+  filterSearch(val.toLowerCase());
+});
+clearBtn.addEventListener('click', ()=>{
+  searchInput.value='';
+  clearBtn.classList.remove('show');
+  filterSearch('');
+  searchInput.focus();
+});
+
+function filterSearch(q){
+  const activePanel = document.querySelector('.dayPanel.active');
+  if(!activePanel) return;
+  activePanel.querySelectorAll('.searchable').forEach(el=>{
+    const match = q==='' || el.innerText.toLowerCase().includes(q);
+    el.classList.toggle('hidden', !match);
+  });
+  // 也搜尋 timeline 行
+  activePanel.querySelectorAll('.timelineRow').forEach(row=>{
+    const match = q==='' || row.innerText.toLowerCase().includes(q);
+    row.style.display = match ? '' : 'none';
+  });
+}
 </script>
 </body>
 </html>
