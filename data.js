@@ -49,7 +49,7 @@ const tripData = {
 
   airportGuide: [
     {
-      terminal: "T1（第一航廈）",
+      terminal: "T2（第二航廈）",
       facilities: [
         { name: "AREX機場快線／WOWPASS櫃位", location: "到達層 → 交通中心 B1" },
         { name: "貨幣兌換", location: "1樓入境大廳" },
@@ -86,7 +86,7 @@ const tripData = {
     {
       date: "9/12（五）",
       theme: "抵達 · 明洞安頓",
-      route: "仁川機場T1 → AREX → 首爾站 → 明洞入住 → 換錢 → 豬腳晚餐 → 夜逛",
+      route: "仁川機場T2 → AREX → 首爾站 → 明洞入住 → 換錢 → 豬腳晚餐 → 夜逛",
       cardDay: null,
       timeline: [
         { time: "17:05", desc: "🛬 抵達仁川國際機場T1。入境→行李→①WOWPASS領卡儲值（每人₩100,000–150,000≈HKD570–860）→AREX直達車。週五傍晚人多，過關+行李約40-60分，目標18:30-19:00上車。AREX直達車₩13,000≈HKD74/人（對號坐）；普通車約₩4,500≈HKD26。", subway: "仁川機場T1到達層 → 交通中心B1" },
