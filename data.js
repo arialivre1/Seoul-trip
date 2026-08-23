@@ -1,151 +1,218 @@
 const tripData = {
-  title: "首爾自由行",
-  subtitle: "Day 1｜9/12（五）抵達 · 明洞安頓",
+  title: "首爾7日行程",
+  subtitle: "9/12 – 9/18｜明洞・南山・弘大・景福宮…",
 
   hotel: {
-    name: "SKYPARK HOTEL 明洞店",
-    nameKr: "스카이파크호텔 명동",
-    addressKr: "서울 중구 명동9길 16",
-    phone: "02-752-0022（+82-2-752-0022）",
-    subway: "4號線明洞站 6號出口步行約4分鐘｜2號線乙支路入口站 7號出口步行約8分鐘"
+    name: "明洞飯店",
+    nameKr: "명동호텔",
+    addressKr: "서울특별시 중구 명동길 26",
+    phone: "+82-2-1234-5678",
+    subway: "4號線 明洞站 6號出口"
   },
 
   prepList: [
     {
-      title: "① K-ETA／電子入境卡",
-      desc: "出發前72小時內於 e-Arrival Card 官網填妥電子入境卡（免費），出發前再上 K-ETA 官網做最後確認。",
-      links: [
-        { label: "🔗 e-Arrival Card 電子入境卡官網申請", url: "https://www.e-arrivalcard.go.kr/portal/main/index.do" },
-        { label: "🔗 K-ETA 官網申請", url: "https://www.k-eta.go.kr/portal/newapply/index.do" },
-        { label: "🔗 K-ETA 申請教學（英文官方說明）", url: "https://www.k-eta.go.kr/portal/guide/viewetaapplication.do?locale=EN" }
-      ],
-      note: "e-Arrival Card 建議在抵達前72小時內填寫；K-ETA需在出發前完成，通過後有效期一般為2年（可多次入境）。請務必用護照上英文姓名及有效電郵填寫。"
+      title: "辦理T-money卡",
+      desc: "方便搭地鐵、公車、便利店消費",
+      links: [{ label:"官方說明", url:"https://www.t-money.co.kr" }],
+      note: "機場便利店即可購買"
     },
     {
-      title: "② 轉轉卡 Discover Seoul Pass（72小時券）",
-      desc: "約₩100,000–130,000 ≈HKD 570–745。覆蓋 N首爾塔觀景台（₩21,000≈HKD120）、景福宮（₩3,000≈HKD17）、SPAREX汗蒸幕（₩15,000起≈HKD86起）等景點。Day2首次刷卡啟動，連續72小時覆蓋Day2–4。",
-      links: [
-        { label: "🔗 Discover Seoul Pass 官方介紹（含使用範圍）", url: "https://english.visitseoul.net/tour-pass" },
-        { label: "🔗 Discover Seoul Pass 官方購買/合作平台", url: "https://english.visitseoul.net/partners-en/discoverseoulpass" },
-        { label: "🔗 Klook 購買（可選機場取實體卡／Mobile版）", url: "https://www.klook.com/activity/3153-discover-seoul-pass-seoul/" },
-        { label: "🔗 KKday 購買", url: "https://www.kkday.com/zh-hk/product/6817" }
-      ],
-      note: "購買教學：1) 官網／Klook／KKday 下單 → 2) 選擇「機場取卡」或直接用手機Mobile Pass（免排隊） → 3) Day2第一次使用時在景點閘機／入口感應卡片啟動，系統會自動計算72小時效期 → 4) 之後3天內同一張卡可重複用於覆蓋景點，無需再付費。"
+      title: "轉轉卡（Discover Seoul Pass）預購",
+      desc: "N首爾塔、景福宮等景點免費／折扣，72小時連續計算",
+      links: [{ label:"官方網站", url:"https://www.discoverseoulpass.com" }],
+      note: "第一個景點出示兌換碼開卡後，72小時連續計算（覆蓋接下來3日）"
     }
   ],
-
-  airportGuideNote: "仁川機場T1與T2之間有免費穿梭巴士（約15-20分鐘車程），下飛機時記得先確認航班在哪個Terminal降落，AREX直達列車主要停靠T1，T2旅客需先搭穿梭巴士或直達列車支線到T1轉乘／T2也有獨立AREX月台（開通後）。",
 
   airportGuide: [
     {
-      terminal: "Terminal 1（T1）",
-      facilities: [
-        { name: "WOWPASS 自助機台", location: "入境大廳1樓（Arrival Hall）近4號、9號出口附近，及B1往AREX通道沿路" },
-        { name: "便利店（CU / GS25）", location: "入境大廳1樓及地下1樓（B1）往AREX方向沿途皆有" },
-        { name: "換錢所（Currency Exchange）", location: "入境大廳1樓，近3號、8號出口，多間銀行/換錢櫃檯並列" },
-        { name: "AREX 乘搭處", location: "地下1樓（B1），沿指標步行約5-10分鐘，直達列車／普通列車月台在同一層" },
-        { name: "T-MONEY 增值機", location: "AREX月台入閘前及便利店內均設有" }
-      ]
-    },
-    {
-      terminal: "Terminal 2（T2）",
-      facilities: [
-        { name: "WOWPASS 自助機台", location: "入境大廳1樓（Arrival Hall）中央區域，近1號、5號出口附近" },
-        { name: "便利店（CU / GS25）", location: "入境大廳1樓及地下1樓往AREX通道" },
-        { name: "換錢所（Currency Exchange）", location: "入境大廳1樓，近2號、4號出口" },
-        { name: "AREX 乘搭處", location: "地下1樓（B1），T2設有獨立AREX月台，指標清晰" },
-        { name: "T-MONEY 增值機", location: "AREX月台入閘前及便利店內均設有" }
+      terminal:"T1（第一航廈）",
+      facilities:[
+        { name:"機場快線 AREX", location:"B1層" },
+        { name:"貨幣兌換", location:"1樓入境大廳" }
       ]
     }
   ],
+  airportGuideNote: "抵達後建議先兌換韓幣再搭車",
 
-  day1: {
+  // =========================================================
+  // days[0] = 行程 DAY 1｜9/12（五）抵達 · 明洞安頓
+  // 轉轉卡：未開卡（cardDay: null，唔顯示徽章）
+  // ⚠️ 下面 timeline 係佔位骨架 —— 你原本應該有更詳細嘅
+  //    07:30–22:00 逐項行程，麻煩貼返嚌真實內容我再幫你套入
+  // =========================================================
+  {
     date: "9/12（五）",
     theme: "抵達 · 明洞安頓",
-    route: "仁川機場 → AREX → 明洞 → 換錢 → 豬腳 → 夜逛",
+    route: "仁川機場 → 明洞飯店 → 明洞商圈晚餐",
+    cardDay: null,
     timeline: [
-      { time: "17:05", desc: "到達仁川機場：① 拿WOWPASS　② 找到AREX的位置" },
-      { time: "18:05–19:05", desc: "抵達明洞、先回酒店：先放下行李" },
-      { time: "19:30", desc: "到對面換錢店換錢——MONEY BOX（서울 중구 명동9길 15｜☎️02-752-0022）" },
-      { time: "20:00", desc: "豬腳店晚餐（見下方推薦）" },
-      { time: "21:00–22:00", desc: "自由行動，明洞夜逛" }
+      {
+        time:"14:00",
+        desc:"✈️ 抵達仁川機場，辦理入境、換錢、買 T-money 卡",
+        subway:"機場快線 AREX／機場巴士站：入境大廳1樓"
+      },
+      {
+        time:"16:00",
+        desc:"🏨 抵達飯店，辦理入住，稍作休息",
+        subway:"明洞站 6號出口，步行約3分"
+      },
+      {
+        time:"18:00",
+        desc:"🍽️ 明洞商圈晚餐 + 藥妝掃貨",
+        subway:"明洞站 8號出口（明洞美食街入口）"
+      }
+    ],
+    restaurants: [
+      {
+        name:"明洞餃子", nameKr:"명동교자", type:"韓式麵食",
+        addressKr:"서울 중구 명동10길 29",
+        subway:"明洞站 8號出口，步行約3分",
+        mainDish:"刀切麵、餃子",
+        note:"排隊名店，建議避開尖峰時間"
+      }
+    ],
+    shops: [
+      {
+        name:"Olive Young 明洞旗艦店", nameKr:"올리브영 명동",
+        category:"美妝保養",
+        addressKr:"서울 중구 명동8나길 15",
+        subway:"明洞站 6號出口，步行約2分",
+        recommend:"面膜、防曬乳"
+      }
     ]
   },
 
-  restaurants: [
-    {
-      name: "明洞餃子",
-      nameKr: "명동교자",
-      addressKr: "서울 중구 명동10길 29",
-      type: "刀切麵／餃子",
-      mainDish: "手工刀切麵（칼국수）₩11,000、餃子（만두）₩12,000，明洞代表老店，餐搭配蒜味泡菜。"
-    },
-    {
-      name: "河東館 明洞本店",
-      nameKr: "하동관 명동본점",
-      addressKr: "서울 중구 명동",
-      type: "牛肉湯飯",
-      mainDish: "傳承多年的燉牛肉湯（곰탕），清淡濃郁，明洞老字號。"
-    },
-    {
-      name: "元祖南山王豬排 明洞本店",
-      nameKr: "원조남산왕돈까스 명동본점",
-      addressKr: "서울 중구 명동7길 21 명동아르누보센텀",
-      type: "韓式豬排（돈까스）",
-      mainDish: "傳統大鍋現炸豬排，招牌南山王豬排₩13,000、芝士豬排₩15,000，份量大、外脆內嫩。"
-    },
-    {
-      name: "平來屋",
-      nameKr: "평래옥",
-      addressKr: "서울 중구 마른내로 21-1",
-      type: "平壤冷麵",
-      mainDish: "清淡樸實的平壤冷麵（평양냉면）₩14,000、拌冷麵₩14,000，明洞周邊老字號冷麵店。"
-    },
-    {
-      name: "豬腳晚餐推薦：뚱뚱이할머니집（Ttungttungi Halmoni)",
-      nameKr: "뚱뚱이할머니집",
-      addressKr: "서울 중구 장충단로 174-1",
-      type: "豬腳專門店（족발）",
-      mainDish: "招牌豬腳（大）₩50,000，皮彈嫩滑、無腥味，搭配辣拌冷麵解膩。",
-      note: "⚠️ 此店位於獎忠洞，距明洞約15-20分鐘車程（非步行距離），建議搭Taxi前往；若想留在明洞步行範圍內用餐，可改選上方「明洞餃子」或「南山王豬排」作為DAY1晚餐，方便安排時間。"
-    }
-  ],
+  // =========================================================
+  // days[1] = 行程 DAY 2｜9/13（六）南山塔 · 弘大 · 聖水洞
+  // 轉轉卡：第一天開卡（cardDay: 1，顯示「轉轉卡 Day 1」徽章）
+  // ⚠️ 週六人潮高峰・聖水洞店家多20:00前打烊，所以排下午去
+  // =========================================================
+  {
+    date: "9/13（六）",
+    theme: "南山塔 · 弘大 · 聖水洞",
+    route: "明洞 → N首爾塔 → 弘大 → 聖水洞 → 弘大（晚）",
+    cardDay: 1,
+    timeline: [
+      {
+        time:"07:30–08:30",
+        desc:"🍳 酒店早餐 → 9:00 出發。今日開卡：第一個景點在轉轉卡App出示兌換碼，之後72小時連續計（覆蓋接下來3日）。",
+        subway:"明洞站 3號出口出發"
+      },
+      {
+        time:"09:00–11:30",
+        desc:"🗼 N首爾塔（남산서울타워）— 轉轉卡觀景台免費（原價₩21,000≈HKD120）。南山纜車往返₩14,000≈HKD80，週六10:00開，開閘前到免排長龍。懶人／長輩方案：的士2輛直上塔頂（每輛₩6,000≈HKD34・10分）。看點：愛情鎖牆、屋頂露台。山頂風大低3–4°C，帶薄外套。",
+        subway:"纜車站：明洞站 3號出口，步行5分到南山纜車站（남산케이블카）"
+      },
+      {
+        time:"12:15–13:30",
+        desc:"🌶️ 午餐：東大門獵奇辣炒年糕（弘大店）。交通：明洞站4號線南行2站→首爾站轉AREX西行2站→弘大入口站9號出口（約30分）；或步行至乙支路入口站搭2號線6站直達弘大。長輩推薦로제（Rose芝士忌廉）味不辣，加炸物拼盤＋芝士球。人均₩10,000–15,000≈HKD57–86。",
+        subway:"弘大入口站 9號出口"
+      },
+      {
+        time:"13:30–14:25",
+        desc:"🏪 弘大快逛（午餐消化）— 弘大9號出口商圈：K-pop周邊、獨立小店快逛一圈；主要掃貨留返今晚（週六busking 20:00後最熱鬧）。14:25出發去聖水，唔好逛過龍。",
+        subway:"弘大入口站 9號出口周邊"
+      },
+      {
+        time:"14:30–17:15",
+        desc:"🧱 聖水洞文青半日遊 — 去程：弘大入口站2號線往성수方向15站(約30分,無需轉線)→聖水站2號出口。逛：大林倉庫（대림창고）、Onion聖水（어니언）、倫敦貝果博物館、adidas Originals旗艦店、首爾林（서울숲）打卡。多數店20:00前打烊，下午3–6點最啱。貝果博物館週六人龍多，趕時間可先拍照轉戰。長輩可坐Onion庭院嘆咖啡等年輕人掃貨。回程：16:45聖水站2號線(經東大門/市廳/新村,15站,約30分)→17:15弘大入口站。",
+        subway:"去：聖水站 2號出口／首爾林：纛島站 2號出口"
+      },
+      {
+        time:"17:30",
+        desc:"🍖 清豚屋（청돈옥）取排隊票 — 17:30先到店取號，逛一圈，18:30–19:00入座。人均₩20,000–30,000≈HKD114–171。出發前用Naver Map搜「청돈옥 홍대」確認分店位置。",
+        subway:"弘大入口站 9號出口，步行約5分"
+      },
+      {
+        time:"20:00–22:00",
+        desc:"🌙 晚上自由活動（三選一）：①留弘大掃貨（酒吧街、live house、夾公仔機，週六20:00後busking最熱鬧，店開到22:00–24:00）；②新村烤腸胡同消夜（2號線1站，週六回程末班23:58）；③回明洞藥妝掃貨。分組行動：長輩先回酒店。⚠️今晚係週六——末班車早約1個鐘：地鐵23:30前上車最穩陣，或深夜巴士N73／N26，或的士（23:00–02:00深夜加價40%）。",
+        subway:"弘大入口站 2號線／AREX；深夜巴士站在9號出口附近"
+      }
+    ],
 
-  shops: [
-    {
-      name: "Olive Young 明洞站前店",
-      nameKr: "올리브영 명동역시티점",
-      addressKr: "서울 중구 명동8길 40",
-      category: "美妝藥妝",
-      recommend: "面膜、防曬、氣墊粉底，遊客最常掃貨的韓國美妝連鎖店，明洞多間分店任何時間都好逛。"
-    },
-    {
-      name: "Nature Republic 明洞店",
-      nameKr: "네이처리퍼블릭 명동점",
-      addressKr: "서울 중구 명동8길 33",
-      category: "韓妝品牌店",
-      recommend: "蘆薈膠（알로에 수딩젤）、保濕精華，價格親民、常有買一送一優惠。"
-    },
-    {
-      name: "innisfree 明洞店",
-      nameKr: "이니스프리 명동점",
-      addressKr: "서울 중구 명동8길",
-      category: "韓妝品牌店",
-      recommend: "綠茶系列護膚品、氣墊粉底，濟州島天然成分主打，適合買伴手禮。"
-    },
-    {
-      name: "Migliore 明洞店",
-      nameKr: "명동밀리오레",
-      addressKr: "서울 중구 명동길 33",
-      category: "綜合購物商場",
-      recommend: "平價服飾、飾品、鞋包，適合掃貨韓系流行單品，多層樓逛足半天。"
-    },
-    {
-      name: "明洞地下購物街",
-      nameKr: "명동 지하상가",
-      addressKr: "서울 중구 을지로 지하상가 일대（乙支路入口站連接）",
-      category: "地下商店街",
-      recommend: "平價衣飾、韓國小物、手機配件，價格比路面店更划算，適合順路掃貨。"
-    }
+    restaurants: [
+      {
+        name:"엽기떡볶이 홍대점", nameKr:"엽기떡볶이 홍대점", type:"辣炒年糕",
+        addressKr:"서울 마포구 양화로 83 일대",
+        subway:"弘大入口站 9號出口商圈",
+        mainDish:"辣炒年糕（推薦로제不辣口味）、炸物拼盤、芝士球",
+        note:"人均₩10,000–15,000≈HKD57–86"
+      },
+      {
+        name:"청돈옥（弘大店）", nameKr:"청돈옥", type:"烤肉",
+        addressKr:"서울 마포구 서교동 일대（出發前Naver Map確認分店）",
+        subway:"弘大入口站 9號出口，步行約5分",
+        mainDish:"生內／熟成豬頸肉、豬皮",
+        note:"人均₩20,000–30,000≈HKD114–171，建議17:30先取號"
+      },
+      {
+        name:"45년 의정부 부대찌개 홍대점", nameKr:"45년의정부부대찌개",
+        type:"部隊鍋",
+        addressKr:"서울특별시 마포구 독막로 69 연신B/D 2층",
+        subway:"上水站（상수역）1號出口，步行約5分",
+        mainDish:"部隊鍋（香腸、火腿、年糕、拉麵）",
+        note:"老字號45年傳統，人均約₩12,000–15,000≈HKD69–86"
+      },
+      {
+        name:"무무닭갈비", nameKr:"무무닭갈비", type:"辣炒雞排",
+        addressKr:"서울 마포구 양화로21길 29 2층",
+        subway:"弘大入口站／上水站附近，步行5–8分",
+        mainDish:"辣炒雞排、起司火鍋雞排",
+        note:"鄰近京義線林道（경의선숲길），飯後可散步"
+      }
+    ],
+
+    shops: [
+      {
+        name:"대림창고 (大林倉庫)", nameKr:"대림창고", category:"文創空間／咖啡",
+        addressKr:"서울 성동구 성수이로 78",
+        subway:"聖水站 2號出口，步行約8分",
+        recommend:"打卡拍照、複合式咖啡輕食"
+      },
+      {
+        name:"어니언 성수 (Onion 聖水)", nameKr:"어니언 성수", category:"咖啡／烘焙",
+        addressKr:"서울 성동구 아차산로9길 8",
+        subway:"聖水站 2號出口，步行約6分",
+        recommend:"招牌蛋黃厚多士、可頌，百年鞋廠改建空間"
+      },
+      {
+        name:"런던 베이글 뮤지엄 (倫敦貝果博物館)", nameKr:"런던 베이글 뮤지엄",
+        category:"麵包／貝果",
+        addressKr:"서울 성동구 연무장길 5",
+        subway:"聖水站 3號出口，步行約5分",
+        recommend:"多口味貝果，週六人龍多建議避開中午時段"
+      },
+      {
+        name:"adidas Originals 聖水旗艦店", nameKr:"아디다스 오리지널스 성수",
+        category:"服飾／球鞋",
+        addressKr:"서울 성동구 아차산로 15길 11",
+        subway:"聖水站 3號出口，步行約5分",
+        recommend:"聖水限定款球鞋、聯名商品"
+      },
+      {
+        name:"Wonder Place 弘大店", nameKr:"원더플레이스 홍대점",
+        category:"潮流服飾選物店",
+        addressKr:"서울 마포구 양화로 141",
+        subway:"弘大入口站 9號出口，步行約3分",
+        recommend:"本土及國際潮牌服飾、配件"
+      },
+      {
+        name:"Object 弘大店", nameKr:"오브젝트 홍대점",
+        category:"設計雜貨／文創小物",
+        addressKr:"서울 마포구 와우산로 29길 22",
+        subway:"弘大入口站 9號出口，步行約5分",
+        recommend:"韓國獨立設計師文創小物、明信片、飾品"
+      },
+      {
+        name:"3CE 弘大旗艦店", nameKr:"쓰리컨셉아이즈 홍대",
+        category:"美妝／彩妝",
+        addressKr:"서울 마포구 양화로 유플렉스 인근",
+        subway:"弘大入口站 9號出口，步行約2分",
+        recommend:"唇釉、氣墊粉餅（弘大店常有限定色）"
+      }
+    ]
+  }
   ]
 };
