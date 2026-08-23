@@ -294,10 +294,20 @@
     const wrap = document.getElementById('prepList');
     d.prepList.forEach(p=>{
       const links = (p.links||[]).map(l=>`<a href="${l.url}" target="_blank">${l.label} ↗</a>`).join(' ');
+      const stepsHtml = (p.steps && p.steps.length)
+        ? `<ol style="margin:8px 0 6px 0;padding-left:20px;font-size:0.82rem;color:var(--text);line-height:1.7;">
+             ${p.steps.map(s=>`<li style="margin-bottom:4px;">${s.replace(/^[①-⑨\d️⃣\s]*/,'')}</li>`).join('')}
+           </ol>`
+        : "";
+      const warningHtml = p.warning
+        ? `<div style="background:#fff3e0;border:1px solid #ffcc80;border-radius:8px;padding:8px 10px;margin:8px 0;font-size:0.78rem;color:#a05a00;">${p.warning}</div>`
+        : "";
       wrap.innerHTML += `
         <div class="prep-item">
           <div class="prep-title">${p.title}</div>
           <div class="prep-desc">${p.desc||""}</div>
+          ${stepsHtml}
+          ${warningHtml}
           ${p.note?`<div class="prep-note">💡 ${p.note}</div>`:""}
           ${links}
         </div>`;
