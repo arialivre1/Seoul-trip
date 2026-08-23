@@ -11,7 +11,8 @@ const tripData = {
   },
 
   prepList: [
-    {title: "e-Arrival Card 電子入境卡",
+    {
+      title: "e-Arrival Card 電子入境卡",
   desc: "2025年2月起韓國正式推行電子入境申報，紙本入境卡已取消（2025年底前為過渡期）。只能喺抵韓前72小時內填（9/12 17:05抵埗 → 9/9晚17:05後先填），5人各自申請，全程免費",
   links: [{ label:"官方網站 e-arrivalcard.go.kr", url:"https://www.e-arrivalcard.go.kr" }],
   steps: [
