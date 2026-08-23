@@ -18,12 +18,6 @@ const tripData = {
       note: "入境審查出示護照＋手機二維碼截圖即可，唔使列印"
     },
     {
-      title: "WOWPASS（機場即買）",
-      desc: "內置T-money，換錢+地鐵巴士+超市消費三合一，每人建議儲值₩100,000–150,000",
-      links: [{ label:"WOWPASS官網", url:"https://www.wowpass.io" }],
-      note: "Day1 AREX一律用WOWPASS拍卡，唔好掃轉轉卡QR"
-    },
-    {
       title: "轉轉卡（Discover Seoul Pass）手機版",
       desc: "72小時連續計算，Day2首個景點（N首爾塔）開卡，覆蓋Day2-4",
       links: [{ label:"官方網站", url:"https://www.discoverseoulpass.com" }],
