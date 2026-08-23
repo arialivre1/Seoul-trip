@@ -2,331 +2,403 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
-<title>首爾7日行程</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>首爾7日行程</title>
 <style>
   :root{
-    --day1:#7c6cff; --day1-soft:#efeaff;
-    --day2:#ff6b6b; --day2-soft:#ffecec;
-    --day3:#3bc9c9; --day3-soft:#e6fbfb;
-    --day4:#ffa94d; --day4-soft:#fff2e2;
-    --day5:#8a63f2; --day5-soft:#f0eafe;
-    --day6:#51cf66; --day6-soft:#e9fbec;
-    --day7:#f783ac; --day7-soft:#fdeaf1;
-    --ink:#33323d;
+    --primary:#e85d75;
+    --primary-dark:#c94560;
+    --bg:#faf7f5;
+    --card:#ffffff;
+    --text:#2d2a2e;
+    --muted:#8a8489;
+    --border:#eee0e2;
+    --accent:#4a7c8c;
+    --gold:#d4a54a;
   }
   *{box-sizing:border-box;}
   body{
-    font-family:"Noto Sans TC","PingFang TC",sans-serif;
-    font-weight:400;
-    letter-spacing:0.3px;
-    background:#f6f5f2;
-    color:var(--ink);
-    margin:0;padding:0;
-    -webkit-font-smoothing:antialiased;
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang HK","Microsoft JhengHei",sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.6;
+    padding-bottom:60px;
   }
   header{
-    background:linear-gradient(135deg,#3a3a6e,#2b2b52);
-    color:#fff;padding:26px 20px 18px;text-align:center;
-    border-radius:0 0 24px 24px;
+    background:linear-gradient(135deg,var(--primary) 0%,var(--primary-dark) 100%);
+    color:#fff;
+    padding:28px 20px 22px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
   }
-  h1{margin:0;font-size:22px;font-weight:600;letter-spacing:1px;}
-  header p{margin:6px 0 0;font-size:13px;opacity:0.85;}
+  header h1{margin:0 0 6px;font-size:1.6rem;font-weight:800;}
+  header p{margin:0;font-size:0.85rem;opacity:0.92;}
+  .hotel-bar{
+    max-width:900px;margin:14px auto 0;
+    background:rgba(255,255,255,0.18);
+    border-radius:12px;
+    padding:10px 16px;
+    font-size:0.8rem;
+    text-align:left;
+  }
+  .hotel-bar b{font-size:0.9rem;}
+  .container{max-width:900px;margin:0 auto;padding:0 14px;}
 
-  .container{max-width:900px;margin:0 auto;padding:16px;}
+  /* 準備事項 & 機場導引 */
+  .section-block{
+    background:var(--card);
+    border-radius:16px;
+    margin-top:16px;
+    padding:16px 18px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.04);
+  }
+  .section-block h2{
+    font-size:1.05rem;margin:0 0 10px;
+    display:flex;align-items:center;gap:6px;
+  }
+  .prep-item{
+    border-left:3px solid var(--primary);
+    padding:8px 12px;margin-bottom:10px;
+    background:#fff8f8;border-radius:0 8px 8px 0;
+  }
+  .prep-item .prep-title{font-weight:700;font-size:0.9rem;}
+  .prep-item .prep-desc{font-size:0.82rem;color:var(--muted);margin:4px 0;}
+  .prep-item .prep-note{font-size:0.78rem;color:var(--accent);}
+  .prep-item a{
+    display:inline-block;margin-top:4px;font-size:0.78rem;
+    color:#fff;background:var(--accent);padding:3px 10px;
+    border-radius:20px;text-decoration:none;
+  }
+  details.section-block summary{
+    font-weight:700;font-size:1.05rem;cursor:pointer;list-style:none;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  details.section-block summary::-webkit-details-marker{display:none;}
+  details.section-block summary::after{content:"▾";color:var(--muted);}
+  details.section-block[open] summary::after{content:"▴";}
 
-  /* ---------- Search Bar ---------- */
-  .searchWrap{
-    position:sticky;top:0;z-index:50;
-    background:#f6f5f2;
-    padding:12px 16px;
-  }
-  .searchBox{
-    display:flex;align-items:center;
-    background:#fff;
-    border-radius:24px;
-    padding:8px 14px;
-    box-shadow:0 3px 10px rgba(0,0,0,0.08);
-  }
-  .searchBox input{
-    flex:1;border:none;outline:none;
-    font-size:14px;background:transparent;
-    font-family:inherit;color:var(--ink);
-  }
-  .searchBox .icon{margin-right:8px;opacity:0.5;}
-  .clearBtn{
-    border:none;background:#eee;color:#888;
-    width:22px;height:22px;border-radius:50%;
-    font-size:13px;cursor:pointer;
-    display:none;align-items:center;justify-content:center;
-    line-height:1;
-  }
-  .clearBtn.show{display:flex;}
-  .clearBtn:hover{background:#e0574a;color:#fff;}
-
-  /* ---------- Tabs ---------- */
-  .tabBar{
+  /* Tabs */
+  .tab-bar{
     display:flex;overflow-x:auto;gap:8px;
-    padding:4px 16px 14px;
+    margin-top:18px;padding:4px 2px 10px;
+    -webkit-overflow-scrolling:touch;
     scrollbar-width:none;
   }
-  .tabBar::-webkit-scrollbar{display:none;}
-  .tabBtn{
+  .tab-bar::-webkit-scrollbar{display:none;}
+  .tab-btn{
     flex:0 0 auto;
-    border:none;cursor:pointer;
-    padding:10px 18px;
+    padding:9px 16px;
     border-radius:20px;
-    font-size:14px;font-weight:600;
-    background:#fff;color:#999;
-    box-shadow:0 2px 6px rgba(0,0,0,0.06);
-    transition:all .25s ease;
+    border:1.5px solid var(--border);
+    background:#fff;
+    color:var(--muted);
+    font-weight:700;
+    font-size:0.85rem;
+    cursor:pointer;
     white-space:nowrap;
+    transition:all .2s;
   }
-  .tabBtn.active{
+  .tab-btn.active{
+    background:var(--primary);
+    border-color:var(--primary);
     color:#fff;
-    transform:translateY(-1px);
-    box-shadow:0 4px 12px rgba(0,0,0,0.18);
+    box-shadow:0 3px 8px rgba(232,93,117,0.35);
   }
 
-  .container > section{display:none;}
-  .container > section.active{display:block;}
+  /* Day content */
+  .day-panel{display:none;}
+  .day-panel.active{display:block;animation:fadeIn .25s ease;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:translateY(0);}}
 
-  section{
-    background:#fff;border-radius:18px;padding:18px;
-    margin-bottom:16px;box-shadow:0 2px 10px rgba(0,0,0,0.06);
+  .day-header{
+    background:var(--card);
+    border-radius:16px;
+    padding:16px 18px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.04);
+    margin-bottom:14px;
   }
-  .staticSection{display:block !important;}
-
-  h2{font-size:17px;margin-top:0;padding-left:10px;border-left:5px solid #e8734a;font-weight:600;}
-  h3{margin-top:18px;font-weight:600;}
-
-  .dayHead{
-    display:flex;align-items:center;justify-content:space-between;
-    flex-wrap:wrap;gap:10px;margin-bottom:14px;
+  .day-header .date-line{
+    display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;
   }
-  .dayTitle{font-size:16px;font-weight:700;}
-  .dayRoute{font-size:13px;color:#777;margin-top:2px;}
+  .day-header .date-line h2{margin:0;font-size:1.25rem;color:var(--primary-dark);}
+  .card-badge{
+    background:linear-gradient(135deg,var(--gold),#c68a2e);
+    color:#fff;font-size:0.72rem;font-weight:700;
+    padding:4px 10px;border-radius:20px;white-space:nowrap;
+  }
+  .day-header .theme{font-size:0.95rem;font-weight:700;margin:6px 0 2px;color:var(--text);}
+  .day-header .route{font-size:0.82rem;color:var(--muted);}
 
-  /* ---------- 轉轉卡 Badge ---------- */
-  .cardBadge{
-    display:inline-flex;align-items:center;gap:6px;
-    background:linear-gradient(135deg,#8a63f2,#4a6cf7);
-    color:#fff;font-weight:700;font-size:13px;
-    padding:6px 16px;border-radius:30px;
-    box-shadow:0 4px 10px rgba(74,108,247,0.35);
+  /* Timeline */
+  .timeline{position:relative;margin-left:6px;}
+  .timeline::before{
+    content:"";position:absolute;left:13px;top:6px;bottom:6px;
+    width:2px;background:var(--border);
+  }
+  .t-item{
+    position:relative;padding-left:36px;margin-bottom:16px;
+  }
+  .t-dot{
+    position:absolute;left:5px;top:2px;
+    width:18px;height:18px;border-radius:50%;
+    background:var(--primary);border:3px solid #fff;
+    box-shadow:0 0 0 2px var(--primary);
+  }
+  .t-time{
+    font-weight:800;color:var(--primary-dark);font-size:0.85rem;
+    background:#fff0f2;display:inline-block;padding:2px 10px;
+    border-radius:10px;margin-bottom:5px;
+  }
+  .t-desc{font-size:0.88rem;color:var(--text);}
+  .t-subway{
+    font-size:0.78rem;color:var(--accent);margin-top:4px;
+    display:flex;align-items:center;gap:4px;
+  }
+  .t-subway::before{content:"🚇";font-size:0.85rem;}
+
+  /* Card sections (restaurants / shops) */
+  .card-list{display:grid;gap:10px;margin-top:10px;}
+  .info-card{
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:12px 14px;
+    background:#fffdfb;
+  }
+  .info-card .name-line{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px;}
+  .info-card .name{font-weight:800;font-size:0.92rem;}
+  .info-card .nameKr{font-size:0.75rem;color:var(--muted);font-weight:400;}
+  .info-card .type-tag{
+    font-size:0.72rem;background:var(--accent);color:#fff;
+    padding:2px 9px;border-radius:12px;white-space:nowrap;
+  }
+  .info-card .addr{font-size:0.78rem;color:var(--muted);margin-top:5px;}
+  .info-card .sub{font-size:0.78rem;color:var(--accent);margin-top:2px;}
+  .info-card .main-dish{font-size:0.83rem;margin-top:6px;color:var(--text);}
+  .info-card .main-dish b{color:var(--primary-dark);}
+  .info-card .note{font-size:0.76rem;color:#b48a2e;margin-top:5px;}
+  .info-card .recommend{font-size:0.83rem;margin-top:6px;}
+  .info-card .recommend b{color:var(--primary-dark);}
+
+  .subsection-title{
+    font-size:0.95rem;font-weight:800;margin:20px 0 4px;
+    display:flex;align-items:center;gap:6px;
+    color:var(--text);
   }
 
-  .card{
-    border:1px solid #f0f0f0;border-radius:16px;
-    padding:14px;margin-bottom:12px;background:#fafafa;
-    transition:box-shadow .2s;
+  .night-box{
+    margin-top:16px;
+    background:#eef5f6;
+    border:1px solid #cfe3e6;
+    border-radius:12px;
+    padding:12px 14px;
   }
-  .card:hover{box-shadow:0 3px 12px rgba(0,0,0,0.08);}
-  .card.hidden{display:none;}
+  .night-box .nt-title{font-weight:800;font-size:0.88rem;color:var(--accent);margin-bottom:4px;}
+  .night-box .nt-desc{font-size:0.8rem;color:var(--text);}
 
-  .tag{display:inline-block;background:#e8734a;color:#fff;font-size:11px;padding:3px 10px;border-radius:20px;margin-right:6px;}
-  .time{font-weight:700;}
-  .subwayTag{
-    display:inline-flex;align-items:center;gap:4px;
-    background:#eef1ff;color:#4a5cc0;
-    font-size:12px;padding:3px 10px;border-radius:14px;
-    margin-top:6px;
+  footer{
+    text-align:center;font-size:0.75rem;color:var(--muted);
+    margin-top:30px;padding:0 20px;
   }
-  a{text-decoration:none;font-weight:600;}
-  a:hover{text-decoration:underline;}
-  table{width:100%;border-collapse:collapse;font-size:13.5px;}
-  table td, table th{border:1px solid #eee;padding:8px;text-align:left;}
-  ul{padding-left:18px;}
-  .note{font-size:12px;color:#999;margin-top:6px;}
-  .timelineRow td:first-child{white-space:nowrap;}
 </style>
 </head>
 <body>
+
 <header>
-  <h1 id="tripTitle">首爾行程</h1>
+  <h1 id="tripTitle">首爾7日行程</h1>
   <p id="tripSubtitle"></p>
+  <div class="hotel-bar" id="hotelBar"></div>
 </header>
 
-<div class="searchWrap">
-  <div class="searchBox">
-    <span class="icon">🔍</span>
-    <input id="searchInput" type="text" placeholder="搜尋餐廳／景點／地鐵站…">
-    <button class="clearBtn" id="clearBtn">✕</button>
-  </div>
-</div>
+<div class="container">
 
-<div class="tabBar" id="tabBar"></div>
+  <details class="section-block" id="prepBlock">
+    <summary>📝 出發前準備事項</summary>
+    <div id="prepList" style="margin-top:10px;"></div>
+  </details>
 
-<div class="container" id="container">
+  <details class="section-block" id="airportBlock">
+    <summary>🛫 機場導引</summary>
+    <div id="airportGuide" style="margin-top:10px;"></div>
+  </details>
 
-  <section id="hotelSection" class="staticSection">
-    <h2>🏨 酒店資訊</h2>
-    <div id="hotelInfo"></div>
-  </section>
-
-  <section id="prepSection" class="staticSection">
-    <h2>🔑 出發前必辦 Top 5</h2>
-    <div id="prepList"></div>
-  </section>
-
-  <section id="airportSection" class="staticSection">
-    <h2>🗺️ 仁川機場 T1／T2 指南</h2>
-    <div id="airportGuide"></div>
-  </section>
+  <div class="tab-bar" id="tabBar"></div>
 
   <div id="dayPanels"></div>
 
 </div>
 
+<footer>
+  ✈️ 資料僅供參考，出發前請以 Naver Map／官方資訊為準
+</footer>
+
 <script src="data.js"></script>
 <script>
-const d = tripData;
-document.getElementById('tripTitle').innerText = d.title;
-document.getElementById('tripSubtitle').innerText = d.subtitle;
+(function(){
+  const d = tripData;
 
-// ---------- Hotel ----------
-document.getElementById('hotelInfo').innerHTML = `
-  <p><strong>${d.hotel.name}</strong>（${d.hotel.nameKr}）</p>
-  <p>📍 韓文地址：${d.hotel.addressKr}</p>
-  <p>☎️ 電話：${d.hotel.phone}</p>
-  <p>🚇 地鐵：${d.hotel.subway}</p>
-`;
+  // Header
+  document.getElementById('tripTitle').textContent = d.title || "旅行行程";
+  document.getElementById('tripSubtitle').textContent = d.subtitle || "";
 
-// ---------- Prep ----------
-document.getElementById('prepList').innerHTML = d.prepList.map(p => `
-  <div class="card">
-    <h3>${p.title}</h3>
-    <p>${p.desc}</p>
-    <ul>${p.links.map(l=>`<li><a href="${l.url}" target="_blank">${l.label}</a></li>`).join('')}</ul>
-    ${p.note?`<p class="note">⚠️ ${p.note}</p>`:''}
-  </div>
-`).join('');
+  if(d.hotel){
+    document.getElementById('hotelBar').innerHTML = `
+      <b>🏨 ${d.hotel.name}</b>（${d.hotel.nameKr}）<br>
+      📍 ${d.hotel.addressKr}　☎️ ${d.hotel.phone||"-"}<br>
+      🚇 ${d.hotel.subway||""}
+    `;
+  }
 
-// ---------- Airport ----------
-document.getElementById('airportGuide').innerHTML = d.airportGuide.map(t=>`
-  <div class="card">
-    <h3>${t.terminal}</h3>
-    <table><tr><th>設施</th><th>位置</th></tr>
-    ${t.facilities.map(f=>`<tr><td>${f.name}</td><td>${f.location}</td></tr>`).join('')}
-    </table>
-  </div>
-`).join('') + `<p class="note">${d.airportGuideNote}</p>`;
+  // Prep list
+  if(d.prepList && d.prepList.length){
+    const wrap = document.getElementById('prepList');
+    d.prepList.forEach(p=>{
+      const links = (p.links||[]).map(l=>`<a href="${l.url}" target="_blank">${l.label} ↗</a>`).join(' ');
+      wrap.innerHTML += `
+        <div class="prep-item">
+          <div class="prep-title">${p.title}</div>
+          <div class="prep-desc">${p.desc||""}</div>
+          ${p.note?`<div class="prep-note">💡 ${p.note}</div>`:""}
+          ${links}
+        </div>`;
+    });
+  } else {
+    document.getElementById('prepBlock').style.display='none';
+  }
 
-// ---------- Tabs + Day Panels ----------
-const tabBar = document.getElementById('tabBar');
-const dayPanels = document.getElementById('dayPanels');
+  // Airport guide
+  if(d.airportGuide && d.airportGuide.length){
+    const wrap = document.getElementById('airportGuide');
+    let html = "";
+    d.airportGuide.forEach(t=>{
+      html += `<div style="margin-bottom:10px;"><b>${t.terminal}</b><ul style="margin:6px 0 0 18px;padding:0;font-size:0.82rem;color:var(--muted);">`;
+      (t.facilities||[]).forEach(f=>{
+        html += `<li>${f.name} — ${f.location}</li>`;
+      });
+      html += `</ul></div>`;
+    });
+    if(d.airportGuideNote){
+      html += `<div class="prep-note">💡 ${d.airportGuideNote}</div>`;
+    }
+    wrap.innerHTML = html;
+  } else {
+    document.getElementById('airportBlock').style.display='none';
+  }
 
-d.days.forEach((day, idx) => {
-  const colorVar = `var(--day${idx+1})`;
-  const softVar = `var(--day${idx+1}-soft)`;
+  // Tabs + Day Panels
+  const tabBar = document.getElementById('tabBar');
+  const dayPanels = document.getElementById('dayPanels');
 
-  // Tab button
-  const btn = document.createElement('button');
-  btn.className = 'tabBtn' + (idx===0?' active':'');
-  btn.style.background = idx===0 ? colorVar : '#fff';
-  btn.innerText = `DAY ${idx+1}`;
-  btn.dataset.idx = idx;
-  btn.addEventListener('click', () => switchDay(idx));
-  tabBar.appendChild(btn);
+  d.days.forEach((day, idx)=>{
+    // Tab button
+    const btn = document.createElement('button');
+    btn.className = 'tab-btn' + (idx===0?' active':'');
+    btn.textContent = `DAY ${idx+1}`;
+    btn.dataset.idx = idx;
+    btn.addEventListener('click', ()=> switchDay(idx));
+    tabBar.appendChild(btn);
 
-  // Panel
-  const panel = document.createElement('section');
-  panel.className = 'dayPanel' + (idx===0?' active':'');
-  panel.dataset.idx = idx;
-  panel.style.borderTop = `4px solid ${colorVar}`;
+    // Panel
+    const panel = document.createElement('div');
+    panel.className = 'day-panel' + (idx===0?' active':'');
+    panel.dataset.idx = idx;
 
-  const cardBadge = day.cardDay
-    ? `<span class="cardBadge">🎫 轉轉卡 Day ${day.cardDay}</span>` : '';
+    let cardBadge = "";
+    if(day.cardDay){
+      cardBadge = `<span class="card-badge">🎟️ 轉轉卡 Day ${day.cardDay}</span>`;
+    }
 
-  panel.innerHTML = `
-    <h2 style="border-color:${colorVar}">DAY ${idx+1}｜${day.date}</h2>
-    <div class="dayHead">
-      <div>
-        <div class="dayTitle">${day.theme}</div>
-        <div class="dayRoute">${day.route||''}</div>
+    let html = `
+      <div class="day-header">
+        <div class="date-line">
+          <h2>DAY ${idx+1}　${day.date||""}</h2>
+          ${cardBadge}
+        </div>
+        <div class="theme">${day.theme||""}</div>
+        <div class="route">🧭 ${day.route||""}</div>
       </div>
-      ${cardBadge}
-    </div>
-    <table>
-      <tr><th style="width:90px;">時間</th><th>內容</th></tr>
-      ${day.timeline.map(t=>`
-        <tr class="timelineRow">
-          <td class="time" style="color:${colorVar}">${t.time}</td>
-          <td>
-            ${t.desc}
-            ${t.subway?`<div class="subwayTag">🚇 ${t.subway}</div>`:''}
-          </td>
-        </tr>
-      `).join('')}
-    </table>
+    `;
 
-    ${day.restaurants && day.restaurants.length ? `
-      <h3 style="color:${colorVar}">🍜 餐廳推薦</h3>
-      ${day.restaurants.map(r=>`
-        <div class="card searchable">
-          <strong>${r.name}</strong>（${r.nameKr}）<span class="tag" style="background:${colorVar}">${r.type}</span>
-          <p>📍 ${r.addressKr}</p>
-          <p>🚇 ${r.subway||'—'}</p>
-          <p>🍽️ 主要菜式：${r.mainDish}</p>
-          ${r.note?`<p class="note">${r.note}</p>`:''}
-        </div>
-      `).join('')}` : ''}
+    // Timeline
+    if(day.timeline && day.timeline.length){
+      html += `<div class="section-block"><h2>⏰ 時間軸</h2><div class="timeline">`;
+      day.timeline.forEach(t=>{
+        html += `
+          <div class="t-item">
+            <div class="t-dot"></div>
+            <div class="t-time">${t.time||""}</div>
+            <div class="t-desc">${t.desc||""}</div>
+            ${t.subway?`<div class="t-subway">${t.subway}</div>`:""}
+          </div>`;
+      });
+      html += `</div></div>`;
+    }
 
-    ${day.shops && day.shops.length ? `
-      <h3 style="color:${colorVar}">🛍️ 商圈店舖推薦</h3>
-      ${day.shops.map(s=>`
-        <div class="card searchable">
-          <strong>${s.name}</strong>（${s.nameKr}）<span class="tag" style="background:${colorVar}">${s.category}</span>
-          <p>📍 ${s.addressKr}</p>
-          <p>🚇 ${s.subway||'—'}</p>
-          <p>🛒 推薦購買：${s.recommend}</p>
-        </div>
-      `).join('')}` : ''}
-  `;
-  dayPanels.appendChild(panel);
-});
+    // Restaurants
+    if(day.restaurants && day.restaurants.length){
+      html += `<div class="section-block"><h2>🍽️ 餐廳推薦</h2><div class="card-list">`;
+      day.restaurants.forEach(r=>{
+        html += `
+          <div class="info-card">
+            <div class="name-line">
+              <div><span class="name">${r.name}</span> <span class="nameKr">${r.nameKr||""}</span></div>
+              ${r.type?`<span class="type-tag">${r.type}</span>`:""}
+            </div>
+            <div class="addr">📍 ${r.addressKr||""}</div>
+            ${r.subway?`<div class="sub">🚇 ${r.subway}</div>`:""}
+            ${r.mainDish?`<div class="main-dish"><b>必食：</b>${r.mainDish}</div>`:""}
+            ${r.note?`<div class="note">💡 ${r.note}</div>`:""}
+          </div>`;
+      });
+      html += `</div></div>`;
+    }
 
-function switchDay(idx){
-  document.querySelectorAll('.tabBtn').forEach((b,i)=>{
-    b.classList.toggle('active', i===idx);
-    b.style.background = i===idx ? `var(--day${i+1})` : '#fff';
+    // Shops
+    if(day.shops && day.shops.length){
+      html += `<div class="section-block"><h2>🛍️ 商圈店舖推薦</h2><div class="card-list">`;
+      day.shops.forEach(s=>{
+        html += `
+          <div class="info-card">
+            <div class="name-line">
+              <div><span class="name">${s.name}</span> <span class="nameKr">${s.nameKr||""}</span></div>
+              ${s.category?`<span class="type-tag">${s.category}</span>`:""}
+            </div>
+            <div class="addr">📍 ${s.addressKr||""}</div>
+            ${s.subway?`<div class="sub">🚇 ${s.subway}</div>`:""}
+            ${s.recommend?`<div class="recommend"><b>推薦買：</b>${s.recommend}</div>`:""}
+          </div>`;
+      });
+      html += `</div></div>`;
+    }
+
+    // Night transport
+    if(day.nightTransport){
+      html += `
+        <div class="section-block">
+          <h2>🌙 深夜交通</h2>
+          <div class="night-box">
+            <div class="nt-title">${day.nightTransport.title||""}</div>
+            <div class="nt-desc">${day.nightTransport.desc||""}</div>
+          </div>
+        </div>`;
+    }
+
+    panel.innerHTML = html;
+    dayPanels.appendChild(panel);
   });
-  document.querySelectorAll('.dayPanel').forEach(p=>{
-    p.classList.toggle('active', Number(p.dataset.idx)===idx);
-  });
-  document.getElementById('searchInput').value='';
-  filterSearch('');
-}
 
-// ---------- Search ----------
-const searchInput = document.getElementById('searchInput');
-const clearBtn = document.getElementById('clearBtn');
+  function switchDay(idx){
+    document.querySelectorAll('.tab-btn').forEach(b=>{
+      b.classList.toggle('active', Number(b.dataset.idx)===idx);
+    });
+    document.querySelectorAll('.day-panel').forEach(p=>{
+      p.classList.toggle('active', Number(p.dataset.idx)===idx);
+    });
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
 
-searchInput.addEventListener('input', e=>{
-  const val = e.target.value.trim();
-  clearBtn.classList.toggle('show', val.length>0);
-  filterSearch(val.toLowerCase());
-});
-clearBtn.addEventListener('click', ()=>{
-  searchInput.value='';
-  clearBtn.classList.remove('show');
-  filterSearch('');
-  searchInput.focus();
-});
-
-function filterSearch(q){
-  const activePanel = document.querySelector('.dayPanel.active');
-  if(!activePanel) return;
-  activePanel.querySelectorAll('.searchable').forEach(el=>{
-    const match = q==='' || el.innerText.toLowerCase().includes(q);
-    el.classList.toggle('hidden', !match);
-  });
-  // 也搜尋 timeline 行
-  activePanel.querySelectorAll('.timelineRow').forEach(row=>{
-    const match = q==='' || row.innerText.toLowerCase().includes(q);
-    row.style.display = match ? '' : 'none';
-  });
-}
+})();
 </script>
 </body>
 </html>
