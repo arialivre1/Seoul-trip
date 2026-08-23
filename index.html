@@ -249,26 +249,6 @@
 
  <details class="section-block" id="prepBlock" open>
   <summary>📝 出發前準備事項</summary>
-  // Prep list
-if(d.prepList && d.prepList.length){
-  const wrap = document.getElementById('prepList');
-  d.prepList.forEach(p=>{
-    const links = (p.links||[]).map(l=>`<a href="${l.url}" target="_blank">${l.label} ↗</a>`).join(' ');
-    // 新增：步驟教學render
-    const stepsHtml = (p.steps && p.steps.length)
-      ? `<ol style="margin:8px 0 4px 18px;padding:0;font-size:0.82rem;color:var(--text);line-height:1.7;">
-           ${p.steps.map(s=>`<li style="margin-bottom:4px;">${s}</li>`).join('')}
-         </ol>`
-      : "";
-    wrap.innerHTML += `
-      <div class="prep-item">
-        <div class="prep-title">${p.title}</div>
-        <div class="prep-desc">${p.desc||""}</div>
-        ${stepsHtml}
-        ${p.note?`<div class="prep-note">💡 ${p.note}</div>`:""}
-        ${links}
-      </div>`;
-  });
   <div id="prepList" style="margin-top:10px;"></div>
 </details>
 
